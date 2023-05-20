@@ -8,6 +8,7 @@ What I learnt in this project:
 
 1. Components: Class Component, Functional Component, Arrow Function
 2. How to export and import component
+3. State, Props
 
 ### `Class Component`
 
@@ -57,3 +58,16 @@ const Navbar = () => {
 export default Navbar
 ```
 
+### `Props vs State`
+
+Both are a property or model data from React Js. We can call them a variable for saving data.
+
+Props:
+- read-only
+- can not be modified
+
+State:
+- state change can be asynchronous
+- state can be modified using this.setState
+
+State or Props is better built by <strong>Class Component</strong>
