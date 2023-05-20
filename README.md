@@ -71,3 +71,8 @@ State:
 - state can be modified using this.setState
 
 State or Props is better built by <strong>Class Component</strong>
+
+
+### `Map, Filter dan Reduce`
+
+Map adalah Looping di Javascript ES6
