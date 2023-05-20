@@ -13,6 +13,7 @@ What I learnt in this project:
 
  ini dipakai kalau pakai component yang gede, dia butuh lifecycle component
 
+```
  import React, { Component } from 'react'
 
  export default class Navbar extends Component {
@@ -22,11 +23,13 @@ What I learnt in this project:
      )
    }
  }
+```
 
 ### `Function Component`
 
 ini jarang dipakai
 
+```
  import React from 'react'
 
  export default function Navbar() {
@@ -34,11 +37,13 @@ ini jarang dipakai
      <div>Navbar</div>
    )
  }
+```
 
 ### `Arrow Function`
 
 kalau component yang kecil-kecil, dia ga pakai lifecycle component pakai ini
 
+```
 import React from 'react'
 
 const Navbar = () => {
@@ -50,4 +55,5 @@ const Navbar = () => {
 }
 
 export default Navbar
+```
 
