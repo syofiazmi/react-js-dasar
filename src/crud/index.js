@@ -26,17 +26,38 @@ export default class Crud extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        this.setState({
-            makanans: [
-                ...this.state.makanans,
-                {
-                    id: this.state.makanans.length + 1,
-                    nama: this.state.nama,
-                    deskripsi: this.state.deskripsi,
-                    harga: this.state.harga
-                }
-            ]
-        })
+        if (this.state.id === "") {
+            this.setState({
+                makanans: [
+                    ...this.state.makanans,
+                    {
+                        id: this.state.makanans.length + 1,
+                        nama: this.state.nama,
+                        deskripsi: this.state.deskripsi,
+                        harga: this.state.harga
+                    }
+                ]
+            })
+        } else {
+            const makananSelainDipilih = this.state.makanans
+                .filter((makanan) => makanan.id !== this.state.id)
+                .map((filterMakanan) => {
+                    return filterMakanan
+                })
+
+            this.setState({
+                makanans: [
+                    ...makananSelainDipilih,
+                    {
+                        id: this.state.makanans.length + 1,
+                        nama: this.state.nama,
+                        deskripsi: this.state.deskripsi,
+                        harga: this.state.harga
+                    }
+                ]
+            })
+        }
+
 
         // State ini biar setelah submit, form nya kembali kosong
         this.setState({
@@ -47,12 +68,27 @@ export default class Crud extends Component {
         })
     }
 
+    editData = (id) => {
+        const makananYangDipilih = this.state.makanans
+            .filter((makanan) => makanan.id === id)
+            .map((filterMakanan) => {
+                return filterMakanan
+            })
+
+        this.setState({
+            nama: makananYangDipilih[0].nama,
+            deskripsi: makananYangDipilih[0].deskripsi,
+            harga: makananYangDipilih[0].harga,
+            id: makananYangDipilih[0].id
+        })
+    }
+
     render() {
         return (
             <div>
                 <NavbarComponent />
                 <div className="container mt-5">
-                    <Tabel makanans={this.state.makanans}/>
+                    <Tabel makanans={this.state.makanans} editData={this.editData} />
                     <Formulir {...this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
 
                 </div>
